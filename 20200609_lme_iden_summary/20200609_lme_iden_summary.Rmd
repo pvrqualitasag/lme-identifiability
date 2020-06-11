@@ -1,0 +1,47 @@
+---
+title: "Identifiability in Linear Mixed Effect Models"
+subtitle: "Based on Wang2013"
+author: "Peter von Rohr"
+date: "`r Sys.Date()`"
+output:
+  tufte::tufte_handout:
+    citation_package: natbib
+    latex_engine: xelatex
+  tufte::tufte_html: default
+  tufte::tufte_book:
+    citation_package: natbib
+    latex_engine: xelatex
+bibliography: skeleton.bib
+link-citations: yes
+---
+
+```{r setup, include=FALSE}
+library(tufte)
+# invalidate cache when the tufte version changes
+knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion('tufte'))
+options(htmltools.dir.version = FALSE)
+met <- rmdhelp::MendeleyExportToolR6$new()
+met$set_local_bib_file(ps_local_bib_file = 'skeleton.bib')
+met$set_this_rmd_file(ps_this_rmd_file = ifelse(rstudioapi::isAvailable(),
+    rstudioapi::getActiveDocumentContext()$path, rprojroot::thisfile()))
+
+```
+
+# Disclaimer
+The topic of identifiability in linear mixed effect model (LME) is summarized based on `r met$add('Wang2013')`. 
+
+
+# Introduction
+In LME, the response variable is decomposed into three parts. 
+
+1. the design matrix associated with fixed effects and covariables right-multiplied by a vector of unknown fixed effects and covariables 
+2. the random effects left-multiplied by a design matrix and 
+3. a random residual vector
+
+
+
+```{r, echo=FALSE, results='asis'}
+if (!knitr::is_html_output()) cat('# References\n')
+```
+
+
